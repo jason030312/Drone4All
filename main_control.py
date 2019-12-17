@@ -55,7 +55,7 @@ def make_obstacle():
 class DDPG:
     def __init__(self):
         self.stateDim = 30
-        self.actionDim = 3
+        self.actionDim = 2
         self.actor = Actor()
         self.critic = Critic()
         self.targetActor = deepcopy(Actor())
@@ -143,14 +143,12 @@ class DDPG:
                 action = action[0]
                 action[0] = action[0] * math.pi
                 action[1] = action[1] * math.pi
-                action[2] = action[2] * 20
                 print()
                 print("This is action")
                 print(action)
                 print()
-
                 last_state = state
-                quad.setMotors(action)
+                quad.setMotors(action, statev[5])
 
                 statev = quad.getState()
                 obstacle = quad.sense(statev[4][0], statev[0], obst_l)

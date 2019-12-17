@@ -9,12 +9,13 @@ class BigQuad(DroneSensor):
         self.vel = [0, 0, 0]  # 초기 0
         self.acc = [0, 0, 0]  # 초기 0
         self.ang = [0]  # 초기 0
-        self.stat_li = [self.locate, self.target, self.vel, self.acc, self.ang]
+        self.arrive = False
+        self.stat_li = [self.locate, self.target, self.vel, self.acc, self.ang, self.arrive]
 
     def getState(self):
         return self.stat_li
 
-    def setMotors(self, action):
+    def setMotors(self, action, finish):
          self.updateState()
 
     def updateState(self):
