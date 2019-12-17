@@ -15,7 +15,7 @@ class BigQuad(DroneSensor):
     def getState(self):
         return self.stat_li
 
-    def setMotors(self, action, finish):
+    def setMotors(self, action, finish, start):
          self.updateState()
 
     def updateState(self):

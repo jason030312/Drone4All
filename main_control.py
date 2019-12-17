@@ -116,6 +116,7 @@ class DDPG:
 
         for i in range(self.start, self.end):
             quad.__init__()
+            quad.setMotors([0, 0], False, True)
             statev = quad.getState()
             obstacle = quad.sense(statev[4][0], statev[0], obst_l)
 
@@ -148,7 +149,7 @@ class DDPG:
                 print(action)
                 print()
                 last_state = state
-                quad.setMotors(action, statev[5])
+                quad.setMotors(action, statev[5], False)
 
                 statev = quad.getState()
                 obstacle = quad.sense(statev[4][0], statev[0], obst_l)
