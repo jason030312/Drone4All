@@ -28,8 +28,8 @@ class Actor(nn.Module):
 
     def __init__(self):
         super(Actor, self).__init__()
-        self.stateDim = 30
-        self.actionDim = 2
+        self.stateDim = 27
+        self.actionDim = 3
 
         self.norm0 = nn.BatchNorm1d(self.stateDim)
 
@@ -70,8 +70,8 @@ class Critic(nn.Module):
 
     def __init__(self):
         super(Critic, self).__init__()
-        self.stateDim = 30
-        self.actionDim = 2
+        self.stateDim = 27
+        self.actionDim = 3
 
         self.fc1 = nn.Linear(self.stateDim, HID_LAYER1)
         self.fc1.weight.data = fanin_init(self.fc1.weight.data.size())

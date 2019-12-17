@@ -54,8 +54,8 @@ def make_obstacle():
 
 class DDPG:
     def __init__(self):
-        self.stateDim = 30
-        self.actionDim = 2
+        self.stateDim = 27
+        self.actionDim = 3
         self.actor = Actor()
         self.critic = Critic()
         self.targetActor = deepcopy(Actor())
@@ -117,16 +117,15 @@ class DDPG:
         for i in range(self.start, self.end):
             quad.__init__()
             quad.setMotors([0, 0], False, True)
-            statev = quad.getState()
-            obstacle = quad.sense(statev[4][0], statev[0], obst_l)
 
+            statev = quad.getState()
+            obstacle = quad.sense(statev[3][0], statev[0], obst_l)
             location_tensor = torch.as_tensor(statev[0], dtype=torch.float32)
             target_tensor = torch.as_tensor(statev[1], dtype=torch.float32)
             inertialVel_tensor = torch.tensor(statev[2], dtype=torch.float32)
-            bodyaccel_tensor = torch.tensor(statev[3], dtype=torch.float32)
-            ang_tensor = torch.tensor(statev[4], dtype=torch.float32)
+            ang_tensor = torch.tensor(statev[3], dtype=torch.float32)
             obstacle_tensor = torch.tensor(obstacle, dtype=torch.float32)
-            state = torch.cat([location_tensor, target_tensor, inertialVel_tensor, bodyaccel_tensor, ang_tensor, obstacle_tensor], dim=0)
+            state = torch.cat([location_tensor, target_tensor, inertialVel_tensor, ang_tensor, obstacle_tensor], dim=0)
             state = state.unsqueeze(0)
 
             print()
@@ -144,23 +143,23 @@ class DDPG:
                 action = action[0]
                 action[0] = action[0] * math.pi
                 action[1] = action[1] * math.pi
+                action[2] = action[2] * 20
                 print()
                 print("This is action")
                 print(action)
                 print()
                 last_state = state
-                quad.setMotors(action, statev[5], False)
+                quad.setMotors(action, statev[4], False)
 
                 statev = quad.getState()
-                obstacle = quad.sense(statev[4][0], statev[0], obst_l)
+                obstacle = quad.sense(statev[3][0], statev[0], obst_l)
                 location_tensor = torch.as_tensor(statev[0], dtype=torch.float32)
                 target_tensor = torch.as_tensor(statev[1], dtype=torch.float32)
                 inertialVel_tensor = torch.tensor(statev[2], dtype=torch.float32)
-                bodyaccel_tensor = torch.tensor(statev[3], dtype=torch.float32)
-                ang_tensor = torch.tensor(statev[4], dtype=torch.float32)
+                ang_tensor = torch.tensor(statev[3], dtype=torch.float32)
                 obstacle_tensor = torch.tensor(obstacle, dtype=torch.float32)
-                state = torch.cat([location_tensor, target_tensor, inertialVel_tensor,
-                                   bodyaccel_tensor, ang_tensor, obstacle_tensor], dim=0)
+                state = torch.cat([location_tensor, target_tensor, inertialVel_tensor, ang_tensor, obstacle_tensor],
+                                  dim=0)
                 state = state.type(dtype=torch.float32)
                 state = state.unsqueeze(0)
                 reward, terminal = quad.giveReward(obstacle)

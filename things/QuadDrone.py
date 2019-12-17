@@ -4,22 +4,29 @@ from sensor import DroneSensor
 class BigQuad(DroneSensor):
     def __init__(self):
         super().__init__()
+        self.dt = 0.1
         self.locate = [0, 0, 0]  # 맵에 따라 설정
         self.target = [0, 0, 0]  # 맵에 따라 설정
         self.vel = [0, 0, 0]  # 초기 0
-        self.acc = [0, 0, 0]  # 초기 0
         self.ang = [0]  # 초기 0
         self.arrive = False
-        self.stat_li = [self.locate, self.target, self.vel, self.acc, self.ang, self.arrive]
+        self.stat_li = [self.locate, self.target, self.vel, self.ang, self.arrive]
 
     def getState(self):
         return self.stat_li
 
     def setMotors(self, action, finish, start):
-         self.updateState()
+        if finish is True:
+            return
+        if start is True:
+            return
+        ang1, ang2, speed = action[0], action[1], action[2]
+        dir = self.angTodir(ang1, ang2)
 
-    def updateState(self):
-        pass
+
+    def angTodir(self, ang1, ang2):
+        dir = [0, 0, 0]
+        return dir
 
     def giveReward(self, obstacle):
         reward = 0
