@@ -29,50 +29,50 @@
 
 
 def back_left_down(drone, speed):
-    getattr(drone, 'backward')(speed)
-    getattr(drone, 'left')(speed)
+    getattr(drone, 'backward')(speed * 1.207)
+    getattr(drone, 'left')(speed * 1.102)
     drone.down(speed*2)
 
 
 def back_left(drone, speed):
-    getattr(drone, 'backward')(speed)
-    getattr(drone, 'left')(speed)
+    getattr(drone, 'backward')(speed / 1.414 * 1.207)
+    getattr(drone, 'left')(speed / 1.414 * 1.102)
 
 
 def back_left_up(drone, speed):
-    getattr(drone, 'backward')(speed)
-    getattr(drone, 'left')(speed)
+    getattr(drone, 'backward')(speed / 1.414 *1.207)
+    getattr(drone, 'left')(speed / 1.414 *1.102)
     drone.up(speed*2)
 
 
 def back_down(drone, speed):
-    getattr(drone, 'backward')(speed)
+    getattr(drone, 'backward')(speed*1.207)
     drone.down(speed*2)
 
 
 def back(drone, speed):
-    getattr(drone, 'backward')(speed)
+    getattr(drone, 'backward')(speed*1.207)
 
 
 def back_up(drone, speed):
-    getattr(drone, 'backward')(speed)
+    getattr(drone, 'backward')(speed*1.207)
     drone.up(speed*2)
 
 
 def back_right_down(drone, speed):
-    getattr(drone, 'backward')(speed)
-    getattr(drone, 'right')(speed)
+    getattr(drone, 'backward')(speed / 1.414 *1.207)
+    getattr(drone, 'right')(speed / 1.414 *1.102)
     drone.down(speed*2)
 
 
 def back_right(drone, speed):
-    getattr(drone, 'backward')(speed)
-    getattr(drone, 'right')(speed)
+    getattr(drone, 'backward')(speed / 1.414 *1.207)
+    getattr(drone, 'right')(speed / 1.414 *1.102)
 
 
 def back_right_up(drone, speed):
-    getattr(drone, 'backward')(speed)
-    getattr(drone, 'right')(speed)
+    getattr(drone, 'backward')(speed / 1.414 *1.207)
+    getattr(drone, 'right')(speed / 1.414 *1.102)
     drone.up(speed*2)
 
 
@@ -82,11 +82,11 @@ def left_down(drone, speed):
 
 
 def left(drone, speed):
-    getattr(drone, 'left')(speed)
+    getattr(drone, 'left')(speed*1.102)
 
 
 def left_up(drone, speed):
-    getattr(drone, 'left')(speed)
+    getattr(drone, 'left')(speed*1.102)
     drone.up(speed*2)
 
 
@@ -105,64 +105,64 @@ def up(drone, speed):
 
 
 def right_down(drone, speed):
-    getattr(drone, 'right')(speed)
+    getattr(drone, 'right')(speed*1.102)
     drone.down(speed*2)
 
 
 def right(drone, speed):
-    getattr(drone, 'right')(speed)
+    getattr(drone, 'right')(speed*1.102)
 
 
 def right_up(drone, speed):
-    getattr(drone, 'right')(speed)
+    getattr(drone, 'right')(speed*1.102)
     drone.up(speed*2)
 
 
 def fw_left_down(drone, speed):
-    getattr(drone, 'forward')(speed)
-    getattr(drone, 'left')(speed)
+    getattr(drone, 'forward')(speed / 1.414 *1.207)
+    getattr(drone, 'left')(speed / 1.414 *1.102)
     drone.down(speed*2)
 
 
 def fw_left(drone, speed):
-    getattr(drone, 'forward')(speed)
-    getattr(drone, 'left')(speed)
+    getattr(drone, 'forward')(speed / 1.414 *1.207)
+    getattr(drone, 'left')(speed / 1.414 *1.102)
 
 
 def fw_left_up(drone, speed):
-    getattr(drone, 'fowward')(speed)
-    getattr(drone, 'left')(speed)
+    getattr(drone, 'forward')(speed / 1.414 *1.207)
+    getattr(drone, 'left')(speed / 1.414 *1.102)
     drone.up(speed*2)
 
 
 def fw_down(drone, speed):
-    getattr(drone, 'forward')(speed)
+    getattr(drone, 'forward')(speed*1.207)
     drone.down(speed*2)
 
 
 def fw(drone, speed):
-    getattr(drone, 'forward')(speed)
+    getattr(drone, 'forward')(speed*1.207)
 
 
 def fw_up(drone, speed):
-    getattr(drone, 'forward')(speed)
+    getattr(drone, 'forward')(speed*1.207)
     drone.up(speed*2)
 
 
 def fw_right_down(drone, speed):
-    getattr(drone, 'forward')(speed)
-    getattr(drone, 'right')(speed)
+    getattr(drone, 'forward')(speed / 1.414 *1.207)
+    getattr(drone, 'right')(speed / 1.414 *1.102)
     drone.down(speed*2)
 
 
 def fw_right(drone, speed):
-    getattr(drone, 'forward')(speed)
-    getattr(drone, 'right')(speed)
+    getattr(drone, 'forward')(speed / 1.414 *1.207)
+    getattr(drone, 'right')(speed / 1.414 *1.102)
 
 
 def fw_right_up(drone, speed):
-    getattr(drone, 'forward')(speed)
-    getattr(drone, 'right')(speed)
+    getattr(drone, 'forward')(speed / 1.414 *1.207)
+    getattr(drone, 'right')(speed / 1.414 *1.102)
     drone.up(speed*2)
 
 
